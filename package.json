@@ -1,0 +1,45 @@
+{
+  "name": "@onting/story-drop-zone-element",
+  "version": "0.0.0-0",
+  "description": "",
+  "homepage": "https://github.com/teamonting/story-drop-zone-element#readme",
+  "bugs": {
+    "url": "https://github.com/teamonting/story-drop-zone-element/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teamonting/story-drop-zone-element.git"
+  },
+  "license": "MIT",
+  "author": "",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "browser": "npx --offline @onting/browser http://localhost:3000/test.html",
+    "build": "npm run build:run --",
+    "build:run": "tsup",
+    "docker": "docker compose up",
+    "prebuild": "npm run prebuild:cdn && npm run prebuild:onting-stub && npm run prebuild:static",
+    "prebuild:cdn": "[ -d './public/cdn/' ] && rm -r ./public/cdn/; mkdir -p ./public/cdn/@onting/stub/ && ln -s ../../../../node_modules/@onting/stub/dist/ ./public/cdn/@onting/stub/",
+    "prebuild:onting-stub": "[ -d './node_modules/@onting/stub/' ] && rm ./node_modules/@onting/stub; ln -s ../../../stub/packages/stub/ ./node_modules/@onting/",
+    "prebuild:static": "[ -d './public/static/' ] && rm ./public/static; ln -s ../static/ ./public/",
+    "start": "concurrently --kill-others \"npm run start:*\"",
+    "start:build": "npm run build -- --watch",
+    "start:serve": "serve ./public/",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "@onting/browser": "^0.1.0-main.202607111109.11d13ae",
+    "@onting/for-jest": "^0.1.0-main.202607161050.3ddabcf",
+    "@tsconfig/strictest": "^2.0.8",
+    "@types/node": "^26.1.1",
+    "concurrently": "^10.0.3",
+    "is-ci": "^4.1.0",
+    "serve": "^14.2.6",
+    "tsup": "^8.5.1",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@onting/stub": "^0.1.0-main.202607161051.2781392"
+  }
+}

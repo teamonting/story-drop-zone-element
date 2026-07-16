@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script type="importmap">
+      {
+        "imports": {
+          "@onting/browser": "https://cdn.jsdelivr.net/npm/@onting/browser@main/static/index.js",
+          "@onting/browser/": "https://cdn.jsdelivr.net/npm/@onting/browser@main/static/",
+          "@onting/stub": "./cdn/@onting/stub/dist/index.js",
+          "@onting/story-drop-zone-element": "./static/index.js",
+          "@onting/story-drop-zone-element/": "./static/",
+          "expect": "https://esm.sh/expect?standalone"
+        }
+      }
+    </script>
+    <style type="text/css">
+      img:hover {
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+    <drop-zone></drop-zone>
+    <img src="https://picsum.photos/id/1005/200" />
+    <script type="module">
+      import '@onting/story-drop-zone-element/define.js';
+      import { DropZoneDropURIEvent } from '@onting/story-drop-zone-element';
+
+      import { getStub } from '@onting/browser';
+      import { expect } from 'expect';
+
+      // TODO: Not working.
+      // const stub = await getStub();
+      const stub = await getStub((await import('@onting/stub')).default);
+
+      const dropResolvers = Promise.withResolvers();
+      const element = document.querySelector('drop-zone');
+
+      element.addEventListener('dropzonedrop', dropResolvers.resolve, { once: true });
+
+      await stub.inputPerformActions([
+        {
+          actions: [
+            {
+              origin: 'viewport',
+              type: 'pointerMove',
+              x: 100,
+              y: 200
+            },
+            {
+              button: 0,
+              type: 'pointerDown'
+            },
+            {
+              origin: 'viewport',
+              type: 'pointerMove',
+              x: 100,
+              y: 100
+            },
+            {
+              button: 0,
+              type: 'pointerUp'
+            }
+          ],
+          id: 'mouse1',
+          parameters: { pointerType: 'mouse' },
+          type: 'pointer'
+        }
+      ]);
+
+      const event = await dropResolvers.promise;
+
+      expect(event).toEqual(expect.any(DropZoneDropURIEvent));
+      expect(event).toHaveProperty('uri', 'https://picsum.photos/id/1005/200');
+
+      console.log('🆗');
+    </script>
+  </body>
+</html>

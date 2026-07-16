@@ -1,0 +1,48 @@
+services:
+  # On Windows, run with COMPOSE_CONVERT_WINDOWS_PATHS=1
+
+  chrome:
+    image: selenium/standalone-chromium:150.0
+    depends_on:
+      - web
+    environment:
+      SE_OPTS: '--log-level WARNING'
+      SE_NODE_SESSION_TIMEOUT: '10'
+    ports:
+      - '4444:4444'
+      - '7900:7900'
+    shm_size: '2.5gb'
+
+  # chrome:
+  #   image: selenium/node-chromium:150.0
+  #   depends_on:
+  #     - selenium-hub
+  #     - web
+  #   environment:
+  #     SE_EVENT_BUS_HOST: selenium-hub
+  #     SE_EVENT_BUS_PUBLISH_PORT: '4442'
+  #     SE_EVENT_BUS_SUBSCRIBE_PORT: '4443'
+  #     SE_OPTS: '--log-level WARNING'
+  #     SE_NODE_SESSION_TIMEOUT: '10'
+  #   ports:
+  #     - '7900:7900'
+  #   shm_size: '2.5gb'
+
+  # selenium-hub:
+  #   image: selenium/hub:4.46
+  #   container_name: selenium-hub
+  #   environment:
+  #     GRID_TIMEOUT: '300'
+  #   ports:
+  #     - '4444:4444'
+
+  web:
+    build:
+      context: ./
+      dockerfile: web.dockerfile
+    volumes:
+      - ./public/:/var/web/public/
+      - ./public/cdn/@onting/stub/dist/:/var/web/public/cdn/@onting/stub/dist/
+      - ./public/static/:/var/web/public/static/
+    # ports:
+    #   - '8000:80'
