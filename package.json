@@ -19,10 +19,9 @@
     "build": "npm run build:run --",
     "build:run": "tsup",
     "docker": "docker compose up",
-    "postbuild": "[ -d './public/static/' ] && rm ./public/static; ln -s ../static/ ./public/",
     "start": "concurrently --kill-others \"npm run start:*\"",
     "start:build": "npm run build -- --watch",
-    "start:serve": "serve ./public/",
+    "start:serve": "[ -d './public/static/' ] && rm ./public/static; ln -s ../static/ ./public/ && serve ./public/",
     "test": "node --test"
   },
   "devDependencies": {
