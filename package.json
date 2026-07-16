@@ -27,6 +27,7 @@
   "devDependencies": {
     "@onting/browser": "^0.1.0-main.202607111109.11d13ae",
     "@onting/for-jest": "^0.1.0-main.202607161050.3ddabcf",
+    "@onting/stub": "^0.1.0-main.202607161051.2781392",
     "@tsconfig/strictest": "^2.0.8",
     "@types/node": "^26.1.1",
     "concurrently": "^10.0.3",
@@ -34,8 +35,5 @@
     "serve": "^14.2.6",
     "tsup": "^8.5.1",
     "typescript": "^7.0.2"
-  },
-  "dependencies": {
-    "@onting/stub": "^0.1.0-main.202607161051.2781392"
   }
 }
