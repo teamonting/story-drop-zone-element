@@ -42,7 +42,6 @@ services:
       dockerfile: web.dockerfile
     volumes:
       - ./public/:/var/web/public/
-      - ./public/cdn/@onting/stub/dist/:/var/web/public/cdn/@onting/stub/dist/
       - ./public/static/:/var/web/public/static/
     # ports:
     #   - '8000:80'
