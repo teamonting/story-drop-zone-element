@@ -1,9 +1,9 @@
 /// <reference types="node" />
 
-import { test } from 'node:test';
 import { BrowserRun } from '@onting/for-jest';
-import { fileURLToPath } from 'node:url';
 import isCI from 'is-ci';
+import { test } from 'node:test';
+import { fileURLToPath } from 'node:url';
 
 test('drag the photo into the drop zone', async () => {
   const run = isCI
