@@ -7,4 +7,4 @@ export {
   type DropZoneDropURIEventInit
 } from './event.ts';
 
-export { default as DropZoneElement } from './private/DropZoneElement';
+export { default as DropZoneElement } from './private/DropZoneElement.ts';

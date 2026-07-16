@@ -1,4 +1,4 @@
-import { DropZoneDropFilesEvent, DropZoneDropHTMLEvent, DropZoneDropURIEvent } from '../event';
+import { DropZoneDropFilesEvent, DropZoneDropHTMLEvent, DropZoneDropURIEvent } from '../event.ts';
 
 class DropZoneElement extends HTMLElement {
   #shadowRoot: ShadowRoot;
