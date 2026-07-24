@@ -1,5 +1,6 @@
 /.env*
+/*.tgz
 /node_modules/
 /public/cdn/
-/public/static
+/public/static/
 /static/

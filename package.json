@@ -13,7 +13,10 @@
   "license": "MIT",
   "author": "",
   "type": "module",
-  "main": "src/index.ts",
+  "files": [
+    "./CHANGELOG.md",
+    "./static/"
+  ],
   "scripts": {
     "browser": "npx --offline @onting/browser http://localhost:3000/test.html",
     "build": "npm run build:run --",
