@@ -24,10 +24,8 @@ jobs:
         with:
           node-version: ${{ env.node-version }}
           cache: npm
-      # - name: Run npm clean-install
-      #   run: npm clean-install
-      - name: Run npm install
-        run: npm install
+      - name: Run npm clean-install
+        run: npm clean-install
       - name: Run npm build
         run: npm run build --if-present --no-ignore-scripts
       - name: Run npm pack
