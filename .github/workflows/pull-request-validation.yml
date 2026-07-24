@@ -1,0 +1,36 @@
+name: Pull request validation
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  node-version: lts/*
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@main
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@main
+        with:
+          node-version: ${{ env.node-version }}
+          cache: npm
+      # - name: Run npm clean-install
+      #   run: npm clean-install
+      - name: Run npm install
+        run: npm install
+      - name: Run npm build
+        run: npm run build --if-present --no-ignore-scripts
+      - name: Run npm pack
+        run: npm pack --no-ignore-scripts
+      - name: Upload tarball artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: tarball
+          path: *.tgz
+      - name: Run tests
+        run: npm test --no-ignore-scripts
+        timeout-minutes: 15
