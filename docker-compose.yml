@@ -1,6 +1,4 @@
 services:
-  # On Windows, run with COMPOSE_CONVERT_WINDOWS_PATHS=1
-
   chrome:
     image: selenium/standalone-chromium:150.0
     depends_on:
