@@ -25,9 +25,9 @@
     "test": "node --test"
   },
   "devDependencies": {
-    "@onting/browser": "^0.1.0-main.202607111109.11d13ae",
-    "@onting/for-jest": "^0.1.0-main.202607161050.3ddabcf",
-    "@onting/stub": "^0.1.0-main.202607161051.2781392",
+    "@onting/browser": "^0.1.0",
+    "@onting/harness": "^0.1.0",
+    "@onting/stub": "^0.1.0-main",
     "@tsconfig/strictest": "^2.0.8",
     "@types/node": "^26.1.1",
     "concurrently": "^10.0.3",

@@ -1,6 +1,6 @@
 /// <reference types="node" />
 
-import { BrowserRun } from '@onting/for-jest';
+import { BrowserRun } from '@onting/harness';
 import isCI from 'is-ci';
 import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
