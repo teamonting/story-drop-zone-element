@@ -44,5 +44,3 @@ services:
     volumes:
       - ./public/:/var/web/public/
       - ./static/:/var/web/public/static/
-    # ports:
-    #   - '8000:80'
