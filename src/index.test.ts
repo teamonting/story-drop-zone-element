@@ -6,14 +6,10 @@ import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 
 test('drag the photo into the drop zone', async () => {
-  const run = isCI
-    ? new BrowserRun('http://web/test.html', {
-        testFilePath: fileURLToPath(import.meta.url),
-        webDriverURL: 'http://localhost:4444/wd/hub'
-      })
-    : new BrowserRun('http://localhost:3000/test.html', {
-        testFilePath: fileURLToPath(import.meta.url)
-      });
+  const run = new BrowserRun(new URL('test.html', isCI ? 'http://web/' : 'http://localhost:3000/').href, {
+    testFilePath: fileURLToPath(import.meta.url),
+    ...(isCI ? { webDriverURL: 'http://localhost:4444/wd/hub' } : {})
+  });
 
   await run.promise;
 });
