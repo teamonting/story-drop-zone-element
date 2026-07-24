@@ -14,6 +14,7 @@ env:
 
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
 
     steps:
@@ -36,6 +37,11 @@ jobs:
         with:
           name: tarball
           path: '*.tgz'
-      - name: Run tests
+      - name: Setup test
+        run: npm pretest
+      - name: Run test
         run: npm test --no-ignore-scripts
         timeout-minutes: 15
+      - if: always()
+        name: Clean up test
+        run: npm posttest
