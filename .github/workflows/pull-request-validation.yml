@@ -38,10 +38,10 @@ jobs:
           name: tarball
           path: '*.tgz'
       - name: Setup test
-        run: npm pretest
+        run: npm run pretest
       - name: Run test
         run: npm test --no-ignore-scripts
         timeout-minutes: 15
       - if: always()
         name: Clean up test
-        run: npm posttest
+        run: npm run posttest
