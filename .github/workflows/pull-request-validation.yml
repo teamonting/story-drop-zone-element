@@ -1,5 +1,8 @@
 name: Pull request validation
 
+on:
+  workflow_dispatch: {}
+
 defaults:
   run:
     shell: bash
