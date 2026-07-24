@@ -43,6 +43,6 @@ services:
       dockerfile: web.dockerfile
     volumes:
       - ./public/:/var/web/public/
-      - ./public/static/:/var/web/public/static/
+      - ./static/:/var/web/public/static/
     # ports:
     #   - '8000:80'
